@@ -47,7 +47,7 @@ Install dependencies using `npm install` and then serve the Angular project.
 
 6. Modify the home page to display the user's favourite colour.
 
-   - **Modification**: The user's favourite colour is retrieved by the "/home" page and applied as the center in a 3 part linear gradient to the background. The side colours of the gradient are the "/register" page background colours to maintain visual continuity between pages. If no favourite colour is selected, the background will mimic the colouring of the "/register" page. 
+   - **Modification**: The user's favourite colour is retrieved by the "/home" page and applied as the center in a 3 part linear gradient to the background. The corner colours of the gradient are the "/register" page background colours to maintain visual continuity. If no favourite colour is selected, the background will mimic the colouring of the "/register" page. 
 
 7. You may wish to perform some basic input sanitization and form validation in the front end. If you wish, go ahead and do so.
 

@@ -12,8 +12,7 @@ export class HomeComponent implements OnInit {
 
   name: string | undefined;
   userId: string | undefined;
-  //Default value if the customer selects Custom from drop down without selecting a value
-  favouriteColour: string = '#000000'; 
+  favouriteColour: string | undefined; 
 
   ngOnInit(): void {
     const userDetails = this.userService.getUserDetails();
@@ -21,7 +20,7 @@ export class HomeComponent implements OnInit {
     if (userDetails) {
       this.name = userDetails.name;
       this.userId = userDetails.userId;
-      this.favouriteColour = userDetails.favouriteColour || this.favouriteColour; 
+      this.favouriteColour = userDetails.favouriteColour;
     }
 
     //Apply background gradient with user's favourite colour
@@ -30,6 +29,10 @@ export class HomeComponent implements OnInit {
   }
 
   setBackgroundStyle(): void {
+    // The default Favourite Colour if favouriteColour = '' is an average 
+    // of the blues from the  "/register" page to ensure style consistency 
+    const appliedColour = this.favouriteColour || 'rgba(27, 128, 247, 0.8)';
+
     this.renderer.setStyle(
       document.body,
       'background',
@@ -37,7 +40,7 @@ export class HomeComponent implements OnInit {
       `linear-gradient( 
         45deg,
         rgba(43, 57, 255, 0.8) 0%, 
-        ${this.favouriteColour} 30% 70%,
+        ${appliedColour} 30% 70%,
         rgba(0, 199, 239, 0.8) 100%)`
     );
     this.renderer.setStyle(document.body, 'min-height', '100vh');
@@ -49,7 +52,7 @@ export class HomeComponent implements OnInit {
     this.renderer.removeStyle(document.body, 'min-height');
   }
 
-  // Reset background to default in style.css when navigating away
+  // Reset background to the default when navigating away from home
   ngOnDestroy(): void {
     this.resetBackgroundStyle();
   }

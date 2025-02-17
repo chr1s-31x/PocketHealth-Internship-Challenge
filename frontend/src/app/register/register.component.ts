@@ -18,10 +18,12 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  // Modified: The default Favourite Colour is a blend of the blues
-    // from the  "/register" page to ensure style consistency 
-  favouriteColour: string = 'rgba(70, 155, 255)'; 
-  customColour: string = '';  
+  //Leave field empty if no favourite colour is selected 
+  favouriteColour: string = ''; 
+
+  //The default custom colour if none is selected after clicked custom is black
+  //This is because that is the colour displayed for the colour picker
+  customColour: string = '#000000';  
 
   // Modified: Favourite Colour Drop Down Menu Options
   predefinedColours = [
