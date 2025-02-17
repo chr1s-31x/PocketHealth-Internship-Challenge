@@ -1,0 +1,57 @@
+<div>
+  <!-- Header -->
+  <div class="modal-header modal-logo-header">
+    <img src="assets/logos/ph-logo.svg" alt="" class="ph-logo">
+  </div>
+
+  <!-- Content -->
+  <div class="form-container">
+    <form (ngSubmit)="onFormSubmit(form)" #form="ngForm">
+      <!-- Input Fields -->
+           <!--Modified: Mark Name and Email as required and display error messages as necessary-->
+      <div class="input-row">
+        <label for="name">Name<span class="required-asterisk">*</span></label>
+        <input ngModel type="text" name="name" class="input-field" placeholder="Name" [autofocus] required #name="ngModel">
+        <div *ngIf="name.invalid && name.touched" class="error-message">
+          Name is required.
+        </div>
+      </div>
+      <div class="input-row">
+        <label for="email">Email<span class="required-asterisk">*</span></label>
+        <input ngModel name="email" type="email" class="input-field" placeholder="Email" required email #email="ngModel">
+        <div *ngIf="email.invalid && email.touched" class="error-message">
+          Please enter a valid email.
+        </div>
+      </div>
+
+      <!--Modified: Add drop down menu for favourite colour selection-->
+      <div class="input-row">
+        <label for="favouriteColour">Favourite Colour</label>
+        <select id="favouriteColour" [(ngModel)]="favouriteColour" name="favouriteColour" class="input-field">
+          <option *ngFor="let color of predefinedColours" [value]="color.value">
+            {{ color.label }}
+          </option>
+        </select>
+      </div>
+      
+      <!-- Modified: Add colour picker that appears only upon "Custom Colour" selection -->
+      <div class="input-row" *ngIf="favouriteColour === 'custom'">
+        <label for="customColour">Find Your Favourite Colour Below</label>
+        <input type="color" id="customColour" [(ngModel)]="customColour" name="customColour">
+      </div>
+
+      <!-- Button -->
+      <div class="button-row">
+                                                      <!--Modified: Disable button until form is valid-->
+        <button class="btn primary-btn" type="submit" [disabled]="form.invalid"> 
+          Register
+        </button>
+      </div>
+
+      <!--Modified: Indicate * to mean a required field-->
+      <p class="required-message">
+        <span class="required-asterisk">*</span> Indicates a required field
+      </p>
+    </form>
+  </div>
+</div>

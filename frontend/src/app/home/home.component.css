@@ -1,0 +1,43 @@
+/* Header container:*/
+.header-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    position: absolute;
+    top: 3.5vh; 
+    left: 3vw; 
+  }
+  
+  /* Logo: Slightly smaller than on registration page for visual balance */
+  .ph-logo {
+    width: 15vw; 
+    max-width: 150px;
+    height: auto;
+  }
+  
+  /* Return to Register Page Button */
+  .return-button {
+    margin-top: 2vh;
+    padding: 0.8vh 1.6vw; 
+    font-size: 1em; /* Ensure font scales with button */
+    background-color: #0068d7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    min-width: 150px; 
+  min-height: 40px; 
+  }
+  
+  .return-button:hover {
+    background-color: #0056b3;
+  }
+
+
+  /* Main content container */
+  .content-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
