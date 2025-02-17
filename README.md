@@ -23,7 +23,7 @@ Install dependencies using `npm install` and then serve the Angular project.
 
 2. We'd like to modify the server to run on port 80. Please make the appropriate modification.
 
-    - **Modification**: Updated the server's listening port from 8080 to 80 in main.go by setting LISTENING_PORT to '80'. Correspondingly, adjusted the apiUrl in both environment.prod.ts and environment.ts to reflect this change
+    - **Modification**: Updated the server's listening port from 8080 to 80 in main.go by setting LISTENING_PORT to '80'. Correspondingly, adjusted the apiUrl in both environment.prod.ts and environment.ts accordingly.
 
 3. There is a bug where the POST "/register" isn’t returning the User ID. Instead it returns an empty string. Find and fix this bug.
 
@@ -31,25 +31,23 @@ Install dependencies using `npm install` and then serve the Angular project.
 
 4. The registration page attempts to redirect the user to "/home" but it fails since this page isn’t implemented yet. Please add a page to the web app on the "/home" path that displays the message: "Welcome to PocketHealth {Name}. Your User ID is: {User ID}". You can use the "/register" page as a template, please keep the PocketHealth logo on the page.
 
-    - **Modification**: Developed the "/home" page by creating home.component.html, home.component.css, home.component.ts, using "/register" as a template. The logo ph-logo.svg was deliberately chosen rather than favicon.png as per the logo specification of the instructions.
+    - **Modification**: Developed the "/home" page by creating home.component.html, home.component.css, home.component.ts, using the "/register" page as a template. The logo ph-logo.svg was deliberately chosen rather than favicon.png as per the "logo" wording of the instructions.
 
     - Set up home.component.ts to retrieve user details (name, usedId, and favouriteColour) from UserService and display the info via home.component.html.
 
-    - Configure router (app-routing.module.ts) to include the path to "/home" and import HomeComponent to app.module.ts.
+    - Configured router (app-routing.module.ts) to include the path to "/home" and import HomeComponent to app.module.ts.
 
 5. After some time, we decide that we also want to capture the user's favourite colour. Please extend the form to collect the user's favourite colour and update the backend to store this with the user's other details.
 
-    - **Modification**: Enhanced the '/register' page with a dropdown menu offering seven predefined colour options and an additional 'Custom' option, allowing selection via a colour picker. This hybrid approach minimizes decision fatigue while enabling full-personalization.
+    - **Modification**: Implemented a dropdown menu on the '/register' page offering seven predefined colour options and an additional 'Custom' option, allowing selection via a colour picker. This hybrid approach minimizes decision fatigue while enabling full-personalization.
 
-    - Implemented the colour picker with Angular's color picker widget. This appears only if the user selects 'Custom' from the drop down menu to prevent visual clutter. 
+    - Implemented the colour picker using the Angular color picker widget. This appears only if the user selects 'Custom' from the drop down menu to prevent visual clutter. 
 
-    - The selected colour value is then stored and passed to PostRegister (register.component.ts, service.go) and favouriteColour is added as a field in the database schema (users.go, controller.go, service.go, user.service.ts).
+    - The selected colour value is stored and passed to PostRegister (register.component.ts, service.go) and favouriteColour was added as a field in the database schema (users.go, controller.go, service.go, user.service.ts).
 
 6. Modify the home page to display the user's favourite colour.
 
-   - **Modification**: The user's favourite colour is retrieved by the "/home" page and applied as the center in a 3 part linear gradient to the background. The side colours of the gradient are the "/register" page background colours to maintain visual continuity between pages. If no favourite colour is selected, the background will mimic the "/register" page.
-
-   - Only apply the default style.css background if current page is not the home page 
+   - **Modification**: The user's favourite colour is retrieved by the "/home" page and applied as the center in a 3 part linear gradient to the background. The side colours of the gradient are the "/register" page background colours to maintain visual continuity between pages. If no favourite colour is selected, the background will mimic the colouring of the "/register" page. 
 
 7. You may wish to perform some basic input sanitization and form validation in the front end. If you wish, go ahead and do so.
 
@@ -62,4 +60,4 @@ Install dependencies using `npm install` and then serve the Angular project.
 
 ## Submission
 Please provide a link to your solution (Google Drive, Dropbox, GitHub, etc), and email it back within the next 24 hours. 
-- Note: In the instructions email sent by Mr. Gareth Pennington, the final instruction is phrased as "and email it back  prior to the interview." As such, I believe Wednesday is the actual deadline for this assignment. 
+- Note: In the instruction email sent by Mr. Gareth Pennington, the final instruction is phrased as "and email it back  prior to the interview." As such, I believe Wednesday is the actual deadline for this assignment. 
